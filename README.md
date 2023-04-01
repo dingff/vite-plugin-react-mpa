@@ -19,7 +19,7 @@ export default defineConfig({
   plugins: [mpa()],
 });
 ```
-
+It generates temporary files when it runs, so you need to add `.mpa` to the `.gitignore`.
 ## Options
 
 ```js
