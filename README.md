@@ -25,7 +25,7 @@ export default defineConfig({
 ```js
 export type Options = {
   /**
-   * The template file path.
+   * The path of the template file, and the file needs to be ejs.
    */
   template?: string;
   /**
