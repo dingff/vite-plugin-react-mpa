@@ -1,6 +1,6 @@
 import { EntryObject, Options } from './types'
 
-const { outputFileSync, readdirSync, existsSync, rmdirSync, readJsonSync, moveSync } = require('fs-extra')
+const { outputFileSync, readdirSync, existsSync, emptyDirSync, readJsonSync, moveSync } = require('fs-extra')
 const { join } = require('path')
 const ejs = require('ejs')
 
@@ -12,27 +12,27 @@ export default function vitePluginReactMpa(options?: Options) {
     mountElementId: 'root',
     ...options,
   }
-  const getValidPathForEntry = (path: string) => {
-    let validPath = path
+  const getPathInJs = (absPath: string) => {
+    return JSON.stringify(absPath).slice(1, -1)
+  }
+  const getAbsPathForEntry = (path: string) => {
+    let validPath = getPathInJs(path)
     const absPath = join(context, path)
     if (existsSync(absPath)) {
-      validPath = absPath
+      validPath = getPathInJs(absPath)
     }
     return validPath
   }
   const createTempFile = (entry: EntryObject) => {
-    rmdirSync(tempDirPath, {
-      force: true,
-      recursive: true,
-    })
+    emptyDirSync(tempDirPath)
     const reactVersion = readJsonSync(join(context, 'package.json')).dependencies.react
     const versionReg = /(~|\\^)?18/
     const isReact18 = versionReg.test(reactVersion)
     const globalImport = userOptions.globalImport?.reduce((acc, curr) => {
-      return `${acc}\nimport '${getValidPathForEntry(curr)}';`.trimStart()
+      return `${acc}\nimport '${getAbsPathForEntry(curr)}';`.trimStart()
     }, '') || ''
     const { layout } = userOptions
-    const layoutImport = layout ? `import Layout from '${getValidPathForEntry(layout)}';` : ''
+    const layoutImport = layout ? `import Layout from '${getAbsPathForEntry(layout)}';` : ''
     const layoutJSX = layout ? '<Layout><App /></Layout>' : '<App />'
     const rootElement = `document.getElementById('${userOptions.mountElementId}')`
     const reactDOMSource = isReact18 ? 'react-dom/client' : 'react-dom'
@@ -47,7 +47,7 @@ export default function vitePluginReactMpa(options?: Options) {
 // DO NOT CHANGE IT MANUALLY!
 import React from 'react';
 import ReactDOM from '${reactDOMSource}';
-import App from '${filePath}';${layoutImport && `\n${layoutImport}`}
+import App from '${getPathInJs(filePath)}';${layoutImport && `\n${layoutImport}`}
 ${globalImport}
 ${renderer}
       `.trimStart()
