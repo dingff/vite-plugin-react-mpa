@@ -29,7 +29,8 @@ export type Options = {
    */
   template?: string;
   /**
-   * ID of the node to be mounted during page rendering, default is 'root'
+   * ID of the node to be mounted during page rendering.
+   * @default 'root'
    */
   mountElementId?: string;
   /**
@@ -38,12 +39,18 @@ export type Options = {
   globalImport?: string[];
   /**
    * Whether to lower case the output html file name.
+   * @default false
    */
   lowerCase?: boolean;
   /**
    * The path of layout.
    */
   layout?: string;
+  /**
+   * The directory where temporary files are stored.
+   * @default '.mpa'
+   */
+  tempDir?: string;
 }
 ```
 ### The page-level template

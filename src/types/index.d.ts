@@ -8,4 +8,5 @@ export type Options = {
   globalImport?: string[];
   lowerCase?: boolean;
   layout?: string;
+  tempDir?: string;
 }

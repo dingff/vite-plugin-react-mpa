@@ -7,7 +7,7 @@ const ejs = require('ejs')
 export default function vitePluginReactMpa(options?: Options) {
   const PLUGIN_NAME = 'vite-plugin-react-mpa'
   const context = process.cwd()
-  const tempDirectory = join(context, '.mpa')
+  const tempDirPath = join(context, options?.tempDir || '.mpa')
   const userOptions: Options = {
     mountElementId: 'root',
     ...options,
@@ -21,7 +21,7 @@ export default function vitePluginReactMpa(options?: Options) {
     return validPath
   }
   const createTempFile = (entry: EntryObject) => {
-    rmdirSync(tempDirectory, {
+    rmdirSync(tempDirPath, {
       force: true,
       recursive: true,
     })
@@ -41,8 +41,8 @@ export default function vitePluginReactMpa(options?: Options) {
       : `ReactDOM.render(${layoutJSX}, ${rootElement});`
     // 遍历生成文件
     Object.entries(entry).forEach(([entryName, filePath]: [string, any]) => {
-      const jsPath = join(tempDirectory, `${entryName}.jsx`)
-      const htmlPath = join(tempDirectory, `${entryName}.html`)
+      const jsPath = join(tempDirPath, `${entryName}.jsx`)
+      const htmlPath = join(tempDirPath, `${entryName}.html`)
       const tpl = `
 // DO NOT CHANGE IT MANUALLY!
 import React from 'react';
@@ -107,7 +107,7 @@ ${renderer}
       const { entry } = collectEntry()
       const newEntry = createTempFile(entry)
       return {
-        root: tempDirectory,
+        root: tempDirPath,
         build: {
           rollupOptions: {
             input: newEntry,
@@ -116,7 +116,7 @@ ${renderer}
       }
     },
     closeBundle() {
-      moveSync(join(tempDirectory, outDir), join(context, outDir), { overwrite: true })
+      moveSync(join(tempDirPath, outDir), join(context, outDir), { overwrite: true })
     },
   }
 }
