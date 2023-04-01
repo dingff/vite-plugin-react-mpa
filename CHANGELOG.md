@@ -1,5 +1,12 @@
 
 
+## [1.1.1](https://github.com/dingff/vite-plugin-react-mpa/compare/1.1.0...1.1.1) (2023-04-01)
+
+
+### Bug Fixes
+
+* path in js ([057a662](https://github.com/dingff/vite-plugin-react-mpa/commit/057a6624126b475026e3754389d33b8094b2fa67))
+
 # [1.1.0](https://github.com/dingff/vite-plugin-react-mpa/compare/1.0.1...1.1.0) (2023-04-01)
 
 
