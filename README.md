@@ -43,7 +43,7 @@ export type Options = {
    */
   lowerCase?: boolean;
   /**
-   * The path of layout.
+   * The path of the layout component.
    */
   layout?: string;
   /**
