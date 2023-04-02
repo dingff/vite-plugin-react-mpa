@@ -1,5 +1,12 @@
 
 
+## [1.1.2](https://github.com/dingff/vite-plugin-react-mpa/compare/1.1.1...1.1.2) (2023-04-02)
+
+
+### Bug Fixes
+
+* add extension in html ([695f3c3](https://github.com/dingff/vite-plugin-react-mpa/commit/695f3c3f14f2351b8a752d47fc5be64b770fbedb))
+
 ## [1.1.1](https://github.com/dingff/vite-plugin-react-mpa/compare/1.1.0...1.1.1) (2023-04-01)
 
 
