@@ -65,7 +65,7 @@ ${renderer}
         mountElementId: userOptions.mountElementId,
       }, (err: any, str: string) => {
         if (err) throw err
-        const scriptTag = `<script type="module" src="./${entryName}"></script>`
+        const scriptTag = `<script type="module" src="./${entryName}.jsx"></script>`
         const modifiedStr = str.replace('</body>', `${scriptTag}</body>`)
         outputFileSync(htmlPath, modifiedStr)
       })
