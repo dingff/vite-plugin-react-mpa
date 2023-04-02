@@ -1,7 +1,7 @@
 {
   "name": "vite-plugin-react-mpa",
   "version": "1.1.1",
-  "description": "Mpa plugin for vite",
+  "description": "Mpa plugin for Vite",
   "main": "dist/cjs/index.js",
   "types": "dist/cjs/index.d.ts",
   "scripts": {
