@@ -49,7 +49,7 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
-    "father": "^4.1.7",
+    "father": "4.1.8",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.0",
     "release-it": "^15.7.0"
