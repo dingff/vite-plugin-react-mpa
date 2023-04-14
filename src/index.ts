@@ -16,12 +16,9 @@ export default function vitePluginReactMpa(options?: Options) {
     return JSON.stringify(absPath).slice(1, -1)
   }
   const getAbsPathForEntry = (path: string) => {
-    let validPath = getPathInJs(path)
     const absPath = join(context, path)
-    if (existsSync(absPath)) {
-      validPath = getPathInJs(absPath)
-    }
-    return validPath
+    const validPath = existsSync(absPath) ? absPath : path
+    return getPathInJs(validPath)
   }
   const createTempFile = (entry: EntryObject) => {
     emptyDirSync(tempDirPath)
