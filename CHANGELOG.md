@@ -1,5 +1,12 @@
 
 
+## [1.1.3](https://github.com/dingff/vite-plugin-react-mpa/compare/1.1.2...1.1.3) (2023-04-21)
+
+
+### Bug Fixes
+
+* optimize getAbsPathForEntry ([2ed1364](https://github.com/dingff/vite-plugin-react-mpa/commit/2ed136441c3d7ddc0c5a53766680c1967e6e31f9))
+
 ## [1.1.2](https://github.com/dingff/vite-plugin-react-mpa/compare/1.1.1...1.1.2) (2023-04-02)
 
 
