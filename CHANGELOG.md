@@ -1,5 +1,7 @@
 
 
+## [1.1.4](https://github.com/dingff/vite-plugin-react-mpa/compare/1.1.3...1.1.4) (2023-05-22)
+
 ## [1.1.3](https://github.com/dingff/vite-plugin-react-mpa/compare/1.1.2...1.1.3) (2023-04-21)
 
 
