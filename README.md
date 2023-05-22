@@ -25,7 +25,7 @@ It generates temporary files when it runs, so you need to add `.mpa` to the `.gi
 ```js
 export type Options = {
   /**
-   * The path of the template file, and the file needs to be ejs.
+   * The path of the template file, note that the file needs to be ejs.
    */
   template?: string;
   /**
@@ -54,7 +54,7 @@ export type Options = {
 }
 ```
 ### The page-level template
-Create `html.ejs` at the same level as the page component to declare the page-level template. The `mountElementId` is required.
+Create `html.ejs` at the same level as the page component to declare the page-level template. Note that the `mountElementId` is required.
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -69,7 +69,7 @@ Create `html.ejs` at the same level as the page component to declare the page-le
 </html>
 ```
 ### Layout
-The page component will be passed as a child component to the `Layout` component, and global dependencies can be imported here.
+The page component will be passed as a child component to the `Layout` component.
 ```js
 export default function Layout({ children }) {
   return children
